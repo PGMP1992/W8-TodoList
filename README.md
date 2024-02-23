@@ -16,9 +16,15 @@ Requirements
 - Support a text-based user interface
 - Load and save task list to file The solution may also include other creative features at your discretion in case you wish to show some flair. 
 
-- Created class task with an ID to make it easier to update and delete task by Id.
-It is generated after Add() only and can not be changed.
+Created class Task with an ID to make it easier to update and delete task by Id.
 
-- I would like to have created a more Object Oriented approach by it is early days, I hope to get better at it in a near future.
-- Working with Text files is no fun.
-- Please let start using databases :) 
+- It is generated after Add() only and can not be changed.
+- ProjName is created on Add() as well and can not be changed.
+  
+I would like to have created functions to create, edit and delete class Project but didn't have enough time.
+
+I would like to have created a more Object Oriented approach by it is early days, I hope to get better at it in a near future.
+
+Working with Text files is no fun.
+
+Please let start using databases :) 
