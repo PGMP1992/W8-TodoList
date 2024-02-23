@@ -23,7 +23,7 @@ Created class Task with an ID to make it easier to update and delete task by Id.
   
 I would like to have created functions to create, edit and delete class Project but didn't have enough time.
 
-I would like to have created a more Object Oriented approach by it is early days, I hope to get better at it in a near future.
+I would like to have created a more Object Oriented approach but it is early days, I hope to get better at it in a near future.
 
 Working with Text files is no fun.
 
