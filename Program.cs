@@ -16,7 +16,6 @@ bool exitProgram = false;
 List<Task> listTasks = new List<Task>();
 
 MsgColor("Welcome to Todo List", "y");
-//MsgColor("You have X Tasks to do and Y Tasks finished", "w");
 exitProgram = ShowMenu(listTasks, true);
 
 if (listTasks.Count > 0)
@@ -97,7 +96,7 @@ if (listTasks.Count > 0)
 
 }  // ShowMenu 
 
-//static List<Task> Add() // Add new entry Done!
+//static List<Task> Add() // Add new entry 
 static void Add() // Add new entry Done!
 {
     //int iId = 0;
@@ -195,12 +194,11 @@ static void Add() // Add new entry Done!
     }   // while (!exitEntry)
 
     // Save changes to file
-    //DeleteFile();
     WriteFile(listTasks);
 
 } // Add() 
 
-// Menu Edit function
+// Menu Edit Task function
 static void Edit()
 {
     string
@@ -215,7 +213,6 @@ static void Edit()
          exitEntry = false,
          validData = false;
 
-    //int id = 0;
     string[] range = { "Y", "N", "Q" }; // Valid Entries 
 
     DateTime dt = DateTime.Now;
@@ -315,9 +312,9 @@ static void Edit()
                 // Add Task Objs in list
                 if (validData)
                 {
-                    list = DeleteFromList(list, Convert.ToInt32(sId));
+                    list = DeleteFromList(list, Convert.ToInt32(sId)); // Delete Id chosen from List
 
-                    // Create new obj with data to edit 
+                    // Create new obj with data edited 
                     list.Add(new Task(Convert.ToInt32(sId), sTaskName, GetBool(sStatus), dt, sProj));
                     WriteFile(list);
 
@@ -351,7 +348,7 @@ static int GetId(List<Task> list)
 }
 
 
-// Menu ShowList () Done! 
+// Menu ShowList ()  
 static void ShowList(bool sortproject)    
 {
     List<Task> list = new List<Task>();
@@ -361,13 +358,13 @@ static void ShowList(bool sortproject)
 
     IEnumerable<Task> query;
     
-    if (sortproject)
+    if (sortproject) // Sort by Project and Date
     {
         query = from p in list
                 orderby p.ProjName, p.TaskDate
                 select p;
     } 
-    else
+    else // Sorted by Date 
     {
         query = from p in list
                 orderby p.TaskDate
@@ -384,18 +381,18 @@ static void ShowList(bool sortproject)
 
         foreach (var p in query)
         {
-            if (p.Status == true)
+            if (p.Status == true)  // Done tasks 
             {
                 sStatus = "[X}";
-                scolor = "w";
+                scolor = "w"; 
             }
-            else
+            else // Tasks to to done
             {
                 sStatus = "[ ]";
-                scolor = "y";
-                if (p.TaskDate <= dt )
+                scolor = "y";           // Show Yellow
+                if (p.TaskDate <= dt )  // Show Tasks in Red if not done in a week before today 
                 {
-                    scolor = "r";
+                    scolor = "r"; 
                 }
             }
 
@@ -413,7 +410,7 @@ static void ShowList(bool sortproject)
 }
 
 
-// Write list to file - Done!
+// Write list to file
 static void WriteFile ( List<Task> list )   
 {
     DeleteFile();
@@ -473,7 +470,7 @@ static List<Task> ReadFile()
 }
 
 
-// convert To List Done! 
+// convert To List  
 static List<Task> ConvertToList(List<Task> list, string input)  
 {
     string[] listString = input.TrimEnd(',').Split(',').ToArray();
@@ -487,7 +484,7 @@ static List<Task> ConvertToList(List<Task> list, string input)
 }
 
 
-// TaskList to CSV  Done!
+// TaskList to CSV 
 static string ConvertToCSV( List<Task> list) // Done
 {
     StringBuilder sb = new StringBuilder();
@@ -499,7 +496,7 @@ static string ConvertToCSV( List<Task> list) // Done
 }
 
 
-// Delete entry in text Done! 
+// Delete entry in List 
 static List<Task> DeleteFromList(List<Task> alist, int id) // Done !
 {
     alist = ReadFile();
@@ -517,7 +514,7 @@ static List<Task> DeleteFromList(List<Task> alist, int id) // Done !
     }
 }
 
-// Menu Delete function Done! 
+// Menu Delete function  
 static void Delete(List<Task> list)
 { 
     string sImput = "";
